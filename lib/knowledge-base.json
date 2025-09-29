@@ -1,0 +1,126 @@
+{
+  "identity": {
+    "name": "Jacob Rafal",
+    "role": "AI Engineer",
+    "tagline": "AI Engineer specializing in Agents for DevTools & Productivity SaaS",
+    "location": "Available remotely worldwide",
+    "email": "rafaljacobmatthew@gmail.com"
+  },
+  "background": {
+    "summary": "I design, ship, and harden AI systems from data to deployment. Passionate about building intelligent agents that augment human productivity and streamline DevTools workflows.",
+    "specializations": [
+      "NLP and Language Models",
+      "Agent Development",
+      "MLOps and Production Systems",
+      "DevTools and Productivity SaaS",
+      "Full-Stack AI Applications"
+    ],
+    "years_experience": "3+"
+  },
+  "technical_skills": {
+    "ai_ml": {
+      "frameworks": ["PyTorch", "TensorFlow", "Transformers", "LangChain", "Hugging Face"],
+      "expertise": ["Supervised Learning", "Fine-tuning LLMs", "Multi-task Classification", "RAG Systems", "Agent Architecture"],
+      "deployment": ["MLflow", "Docker", "Kubernetes", "Model Optimization", "A/B Testing"]
+    },
+    "data_engineering": {
+      "languages": ["Python", "SQL"],
+      "tools": ["Apache Spark", "Kafka", "Airflow"],
+      "databases": ["PostgreSQL", "Vector DBs", "Redis", "MongoDB"]
+    },
+    "backend": {
+      "frameworks": ["FastAPI", "Flask", "Node.js"],
+      "cloud": ["AWS", "GCP", "Azure"],
+      "devops": ["CI/CD", "GitHub Actions", "Docker", "Kubernetes"]
+    },
+    "frontend": {
+      "frameworks": ["React", "Next.js", "TypeScript"],
+      "styling": ["Tailwind CSS", "Material-UI"],
+      "tools": ["REST APIs", "WebSockets", "GraphQL"]
+    }
+  },
+  "projects": [
+    {
+      "name": "Customer Support AI Classifier",
+      "description": "Multi-task NLP model for automated ticket routing and sentiment analysis",
+      "achievements": [
+        "87% accuracy on 3M+ tweets dataset",
+        "Sub-100ms inference latency",
+        "5 concurrent classification tasks",
+        "Reduced manual routing by 80%"
+      ],
+      "technologies": ["BERT", "PyTorch", "FastAPI", "Docker"]
+    },
+    {
+      "name": "AI Agent for DevTools",
+      "description": "Intelligent coding assistant for automated task completion",
+      "achievements": [
+        "40% productivity improvement",
+        "500+ active users",
+        "10,000+ tasks automated",
+        "Context-aware code generation"
+      ],
+      "technologies": ["LangChain", "GPT-4", "Vector Database", "Next.js"]
+    },
+    {
+      "name": "Real-time Data Pipeline",
+      "description": "Scalable MLOps infrastructure for production ML systems",
+      "achievements": [
+        "Processing 10M+ events daily",
+        "99.9% uptime",
+        "Automated model retraining",
+        "5 concurrent model deployments"
+      ],
+      "technologies": ["Kafka", "Spark", "MLflow", "Kubernetes"]
+    }
+  ],
+  "achievements": {
+    "models_deployed": "15+",
+    "data_processed": "10M+",
+    "accuracy_improvements": "85%",
+    "api_latency": "<100ms"
+  },
+  "interests": [
+    "Open-source AI development",
+    "Building autonomous agents",
+    "MLOps best practices",
+    "AI safety and alignment",
+    "Developer productivity tools"
+  ],
+  "availability": {
+    "status": "Available for opportunities",
+    "preferences": [
+      "AI Engineering roles",
+      "Machine Learning positions",
+      "Data Science projects",
+      "AI Consulting engagements",
+      "Full-time or contract work"
+    ],
+    "work_style": "Remote-first, flexible with time zones"
+  },
+  "education": {
+    "focus": "Computer Science and Machine Learning",
+    "continuous_learning": [
+      "Latest AI research papers",
+      "Production ML systems",
+      "Emerging AI technologies",
+      "Open-source contributions"
+    ]
+  },
+  "links": {
+    "github": "https://github.com/JakeCob",
+    "linkedin": "https://www.linkedin.com/in/jacob-matthew-rafal-b94399217/",
+    "calendly": "https://calendly.com/rafaljacobmatthew/30min"
+  },
+  "conversation_topics": [
+    "My experience with NLP and language models",
+    "Building production ML systems",
+    "Agent development and architecture",
+    "Specific project details and achievements",
+    "Technical challenges I've solved",
+    "My approach to AI engineering",
+    "Career opportunities and collaboration",
+    "Open-source contributions",
+    "Best practices in MLOps"
+  ]
+}

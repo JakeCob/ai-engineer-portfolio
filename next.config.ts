@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import { withContentlayer } from 'next-contentlayer';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: [],
+    formats: ['image/avif', 'image/webp'],
+  },
 };
 
-export default nextConfig;
+export default withContentlayer(nextConfig);

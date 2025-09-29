@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Sample AI Agent Project",
+    "summary": "A demonstration project showing agent-first development approaches for productivity tools.",
+    "tags": [
+      "AI",
+      "Agents",
+      "TypeScript",
+      "Next.js"
+    ],
+    "domain": "DevTools",
+    "skills": [
+      "LLM Integration",
+      "Agent Architecture",
+      "TypeScript",
+      "React"
+    ],
+    "repoUrl": "https://github.com/example/sample-project",
+    "demoUrl": "https://sample-project.vercel.app",
+    "publishedAt": "2024-01-15T00:00:00.000Z",
+    "body": {
+      "raw": "\n# Sample AI Agent Project\n\nThis is a sample project to demonstrate the content system. Replace this with your actual project content.\n\n## Problem Statement\n\nModern development workflows lack intelligent automation that can adapt to context and user preferences.\n\n## Solution\n\nBuilt an AI agent system that:\n\n- Understands developer context\n- Automates repetitive tasks\n- Learns from user patterns\n- Integrates with existing tools\n\n## Technical Implementation\n\n```typescript\n// Sample code snippet\ninterface AgentConfig {\n  model: string;\n  temperature: number;\n  tools: string[];\n}\n\nconst agent = new AIAgent({\n  model: \"gpt-4\",\n  temperature: 0.7,\n  tools: [\"filesystem\", \"git\", \"terminal\"]\n});\n```\n\n## Results\n\n- 40% reduction in repetitive tasks\n- 60% faster development cycles\n- High user satisfaction scores",
+      "code": "var Component=(()=>{var h=Object.create;var l=Object.defineProperty;var d=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var u=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var f=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),j=(n,e)=>{for(var r in e)l(n,r,{get:e[r],enumerable:!0})},o=(n,e,r,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of m(e))!g.call(n,i)&&i!==r&&l(n,i,{get:()=>e[i],enumerable:!(s=d(e,i))||s.enumerable});return n};var A=(n,e,r)=>(r=n!=null?h(u(n)):{},o(e||!n||!n.__esModule?l(r,\"default\",{value:n,enumerable:!0}):r,n)),x=n=>o(l({},\"__esModule\",{value:!0}),n);var c=f((S,a)=>{a.exports=_jsx_runtime});var I={};j(I,{default:()=>b,frontmatter:()=>y});var t=A(c()),y={title:\"Sample AI Agent Project\",summary:\"A demonstration project showing agent-first development approaches for productivity tools.\",tags:[\"AI\",\"Agents\",\"TypeScript\",\"Next.js\"],domain:\"DevTools\",skills:[\"LLM Integration\",\"Agent Architecture\",\"TypeScript\",\"React\"],publishedAt:\"2024-01-15\",repoUrl:\"https://github.com/example/sample-project\",demoUrl:\"https://sample-project.vercel.app\"};function p(n){let e=Object.assign({h1:\"h1\",a:\"a\",p:\"p\",h2:\"h2\",ul:\"ul\",li:\"li\",pre:\"pre\",code:\"code\"},n.components);return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h1,{id:\"sample-ai-agent-project\",children:(0,t.jsx)(e.a,{href:\"#sample-ai-agent-project\",children:\"Sample AI Agent Project\"})}),`\n`,(0,t.jsx)(e.p,{children:\"This is a sample project to demonstrate the content system. Replace this with your actual project content.\"}),`\n`,(0,t.jsx)(e.h2,{id:\"problem-statement\",children:(0,t.jsx)(e.a,{href:\"#problem-statement\",children:\"Problem Statement\"})}),`\n`,(0,t.jsx)(e.p,{children:\"Modern development workflows lack intelligent automation that can adapt to context and user preferences.\"}),`\n`,(0,t.jsx)(e.h2,{id:\"solution\",children:(0,t.jsx)(e.a,{href:\"#solution\",children:\"Solution\"})}),`\n`,(0,t.jsx)(e.p,{children:\"Built an AI agent system that:\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"Understands developer context\"}),`\n`,(0,t.jsx)(e.li,{children:\"Automates repetitive tasks\"}),`\n`,(0,t.jsx)(e.li,{children:\"Learns from user patterns\"}),`\n`,(0,t.jsx)(e.li,{children:\"Integrates with existing tools\"}),`\n`]}),`\n`,(0,t.jsx)(e.h2,{id:\"technical-implementation\",children:(0,t.jsx)(e.a,{href:\"#technical-implementation\",children:\"Technical Implementation\"})}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-typescript\",children:`// Sample code snippet\ninterface AgentConfig {\n  model: string;\n  temperature: number;\n  tools: string[];\n}\n\nconst agent = new AIAgent({\n  model: \"gpt-4\",\n  temperature: 0.7,\n  tools: [\"filesystem\", \"git\", \"terminal\"]\n});\n`})}),`\n`,(0,t.jsx)(e.h2,{id:\"results\",children:(0,t.jsx)(e.a,{href:\"#results\",children:\"Results\"})}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"40% reduction in repetitive tasks\"}),`\n`,(0,t.jsx)(e.li,{children:\"60% faster development cycles\"}),`\n`,(0,t.jsx)(e.li,{children:\"High user satisfaction scores\"}),`\n`]})]})}function v(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,Object.assign({},n,{children:(0,t.jsx)(p,n)})):p(n)}var b=v;return x(I);})();\n;return Component;"
+    },
+    "_id": "projects/sample-project.mdx",
+    "_raw": {
+      "sourceFilePath": "projects/sample-project.mdx",
+      "sourceFileName": "sample-project.mdx",
+      "sourceFileDir": "projects",
+      "contentType": "mdx",
+      "flattenedPath": "projects/sample-project"
+    },
+    "type": "Project",
+    "slug": "sample-project",
+    "readingTime": 1
+  }
+]

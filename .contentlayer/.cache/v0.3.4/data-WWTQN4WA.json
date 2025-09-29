@@ -1,0 +1,75 @@
+{
+  "cacheItemsMap": {
+    "posts/sample-post.mdx": {
+      "document": {
+        "title": "Building Agent-First Applications: Lessons Learned",
+        "summary": "Deep dive into architectural patterns and tradeoffs when building applications with AI agents as first-class citizens.",
+        "tags": [
+          "AI",
+          "Architecture",
+          "Agents",
+          "Design Patterns"
+        ],
+        "publishedAt": "2024-02-01T00:00:00.000Z",
+        "body": {
+          "raw": "\n# Building Agent-First Applications: Lessons Learned\n\nThis is a sample blog post to demonstrate the content system. Replace this with your actual blog content.\n\n## Introduction\n\nThe shift toward agent-first application design represents a fundamental change in how we think about software architecture.\n\n## Key Principles\n\n### 1. Context Awareness\n\nAgents must understand:\n- User intent and goals\n- Current system state  \n- Available resources\n- Historical patterns\n\n### 2. Tool Integration\n\n```typescript\ninterface ToolRegistry {\n  register(tool: Tool): void;\n  execute(toolName: string, params: unknown): Promise<ToolResult>;\n}\n```\n\n### 3. Error Recovery\n\nRobust agent systems need:\n- Graceful degradation\n- Fallback strategies  \n- User feedback loops\n- Learning mechanisms\n\n## Conclusion\n\nAgent-first design requires rethinking traditional patterns but offers significant benefits in user experience and system adaptability.",
+          "code": "var Component=(()=>{var h=Object.create;var s=Object.defineProperty;var p=Object.getOwnPropertyDescriptor;var u=Object.getOwnPropertyNames;var g=Object.getPrototypeOf,f=Object.prototype.hasOwnProperty;var m=(i,e)=>()=>(e||i((e={exports:{}}).exports,e),e.exports),b=(i,e)=>{for(var t in e)s(i,t,{get:e[t],enumerable:!0})},l=(i,e,t,a)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let r of u(e))!f.call(i,r)&&r!==t&&s(i,r,{get:()=>e[r],enumerable:!(a=p(e,r))||a.enumerable});return i};var y=(i,e,t)=>(t=i!=null?h(g(i)):{},l(e||!i||!i.__esModule?s(t,\"default\",{value:i,enumerable:!0}):t,i)),x=i=>l(s({},\"__esModule\",{value:!0}),i);var c=m((v,o)=>{o.exports=_jsx_runtime});var k={};b(k,{default:()=>j,frontmatter:()=>A});var n=y(c()),A={title:\"Building Agent-First Applications: Lessons Learned\",summary:\"Deep dive into architectural patterns and tradeoffs when building applications with AI agents as first-class citizens.\",tags:[\"AI\",\"Architecture\",\"Agents\",\"Design Patterns\"],publishedAt:\"2024-02-01\"};function d(i){let e=Object.assign({h1:\"h1\",a:\"a\",p:\"p\",h2:\"h2\",h3:\"h3\",ul:\"ul\",li:\"li\",pre:\"pre\",code:\"code\"},i.components);return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(e.h1,{id:\"building-agent-first-applications-lessons-learned\",children:(0,n.jsx)(e.a,{href:\"#building-agent-first-applications-lessons-learned\",children:\"Building Agent-First Applications: Lessons Learned\"})}),`\n`,(0,n.jsx)(e.p,{children:\"This is a sample blog post to demonstrate the content system. Replace this with your actual blog content.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"introduction\",children:(0,n.jsx)(e.a,{href:\"#introduction\",children:\"Introduction\"})}),`\n`,(0,n.jsx)(e.p,{children:\"The shift toward agent-first application design represents a fundamental change in how we think about software architecture.\"}),`\n`,(0,n.jsx)(e.h2,{id:\"key-principles\",children:(0,n.jsx)(e.a,{href:\"#key-principles\",children:\"Key Principles\"})}),`\n`,(0,n.jsx)(e.h3,{id:\"1-context-awareness\",children:(0,n.jsx)(e.a,{href:\"#1-context-awareness\",children:\"1. Context Awareness\"})}),`\n`,(0,n.jsx)(e.p,{children:\"Agents must understand:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"User intent and goals\"}),`\n`,(0,n.jsx)(e.li,{children:\"Current system state\"}),`\n`,(0,n.jsx)(e.li,{children:\"Available resources\"}),`\n`,(0,n.jsx)(e.li,{children:\"Historical patterns\"}),`\n`]}),`\n`,(0,n.jsx)(e.h3,{id:\"2-tool-integration\",children:(0,n.jsx)(e.a,{href:\"#2-tool-integration\",children:\"2. Tool Integration\"})}),`\n`,(0,n.jsx)(e.pre,{children:(0,n.jsx)(e.code,{className:\"language-typescript\",children:`interface ToolRegistry {\n  register(tool: Tool): void;\n  execute(toolName: string, params: unknown): Promise<ToolResult>;\n}\n`})}),`\n`,(0,n.jsx)(e.h3,{id:\"3-error-recovery\",children:(0,n.jsx)(e.a,{href:\"#3-error-recovery\",children:\"3. Error Recovery\"})}),`\n`,(0,n.jsx)(e.p,{children:\"Robust agent systems need:\"}),`\n`,(0,n.jsxs)(e.ul,{children:[`\n`,(0,n.jsx)(e.li,{children:\"Graceful degradation\"}),`\n`,(0,n.jsx)(e.li,{children:\"Fallback strategies\"}),`\n`,(0,n.jsx)(e.li,{children:\"User feedback loops\"}),`\n`,(0,n.jsx)(e.li,{children:\"Learning mechanisms\"}),`\n`]}),`\n`,(0,n.jsx)(e.h2,{id:\"conclusion\",children:(0,n.jsx)(e.a,{href:\"#conclusion\",children:\"Conclusion\"})}),`\n`,(0,n.jsx)(e.p,{children:\"Agent-first design requires rethinking traditional patterns but offers significant benefits in user experience and system adaptability.\"})]})}function w(i={}){let{wrapper:e}=i.components||{};return e?(0,n.jsx)(e,Object.assign({},i,{children:(0,n.jsx)(d,i)})):d(i)}var j=w;return x(k);})();\n;return Component;"
+        },
+        "_id": "posts/sample-post.mdx",
+        "_raw": {
+          "sourceFilePath": "posts/sample-post.mdx",
+          "sourceFileName": "sample-post.mdx",
+          "sourceFileDir": "posts",
+          "contentType": "mdx",
+          "flattenedPath": "posts/sample-post"
+        },
+        "type": "Post",
+        "slug": "sample-post",
+        "readingTime": 1
+      },
+      "documentHash": "1755999321721",
+      "hasWarnings": false,
+      "documentTypeName": "Post"
+    },
+    "projects/sample-project.mdx": {
+      "document": {
+        "title": "Sample AI Agent Project",
+        "summary": "A demonstration project showing agent-first development approaches for productivity tools.",
+        "tags": [
+          "AI",
+          "Agents",
+          "TypeScript",
+          "Next.js"
+        ],
+        "domain": "DevTools",
+        "skills": [
+          "LLM Integration",
+          "Agent Architecture",
+          "TypeScript",
+          "React"
+        ],
+        "repoUrl": "https://github.com/example/sample-project",
+        "demoUrl": "https://sample-project.vercel.app",
+        "publishedAt": "2024-01-15T00:00:00.000Z",
+        "body": {
+          "raw": "\n# Sample AI Agent Project\n\nThis is a sample project to demonstrate the content system. Replace this with your actual project content.\n\n## Problem Statement\n\nModern development workflows lack intelligent automation that can adapt to context and user preferences.\n\n## Solution\n\nBuilt an AI agent system that:\n\n- Understands developer context\n- Automates repetitive tasks\n- Learns from user patterns\n- Integrates with existing tools\n\n## Technical Implementation\n\n```typescript\n// Sample code snippet\ninterface AgentConfig {\n  model: string;\n  temperature: number;\n  tools: string[];\n}\n\nconst agent = new AIAgent({\n  model: \"gpt-4\",\n  temperature: 0.7,\n  tools: [\"filesystem\", \"git\", \"terminal\"]\n});\n```\n\n## Results\n\n- 40% reduction in repetitive tasks\n- 60% faster development cycles\n- High user satisfaction scores",
+          "code": "var Component=(()=>{var h=Object.create;var l=Object.defineProperty;var d=Object.getOwnPropertyDescriptor;var m=Object.getOwnPropertyNames;var u=Object.getPrototypeOf,g=Object.prototype.hasOwnProperty;var f=(n,e)=>()=>(e||n((e={exports:{}}).exports,e),e.exports),j=(n,e)=>{for(var r in e)l(n,r,{get:e[r],enumerable:!0})},o=(n,e,r,s)=>{if(e&&typeof e==\"object\"||typeof e==\"function\")for(let i of m(e))!g.call(n,i)&&i!==r&&l(n,i,{get:()=>e[i],enumerable:!(s=d(e,i))||s.enumerable});return n};var A=(n,e,r)=>(r=n!=null?h(u(n)):{},o(e||!n||!n.__esModule?l(r,\"default\",{value:n,enumerable:!0}):r,n)),x=n=>o(l({},\"__esModule\",{value:!0}),n);var c=f((S,a)=>{a.exports=_jsx_runtime});var I={};j(I,{default:()=>b,frontmatter:()=>y});var t=A(c()),y={title:\"Sample AI Agent Project\",summary:\"A demonstration project showing agent-first development approaches for productivity tools.\",tags:[\"AI\",\"Agents\",\"TypeScript\",\"Next.js\"],domain:\"DevTools\",skills:[\"LLM Integration\",\"Agent Architecture\",\"TypeScript\",\"React\"],publishedAt:\"2024-01-15\",repoUrl:\"https://github.com/example/sample-project\",demoUrl:\"https://sample-project.vercel.app\"};function p(n){let e=Object.assign({h1:\"h1\",a:\"a\",p:\"p\",h2:\"h2\",ul:\"ul\",li:\"li\",pre:\"pre\",code:\"code\"},n.components);return(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)(e.h1,{id:\"sample-ai-agent-project\",children:(0,t.jsx)(e.a,{href:\"#sample-ai-agent-project\",children:\"Sample AI Agent Project\"})}),`\n`,(0,t.jsx)(e.p,{children:\"This is a sample project to demonstrate the content system. Replace this with your actual project content.\"}),`\n`,(0,t.jsx)(e.h2,{id:\"problem-statement\",children:(0,t.jsx)(e.a,{href:\"#problem-statement\",children:\"Problem Statement\"})}),`\n`,(0,t.jsx)(e.p,{children:\"Modern development workflows lack intelligent automation that can adapt to context and user preferences.\"}),`\n`,(0,t.jsx)(e.h2,{id:\"solution\",children:(0,t.jsx)(e.a,{href:\"#solution\",children:\"Solution\"})}),`\n`,(0,t.jsx)(e.p,{children:\"Built an AI agent system that:\"}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"Understands developer context\"}),`\n`,(0,t.jsx)(e.li,{children:\"Automates repetitive tasks\"}),`\n`,(0,t.jsx)(e.li,{children:\"Learns from user patterns\"}),`\n`,(0,t.jsx)(e.li,{children:\"Integrates with existing tools\"}),`\n`]}),`\n`,(0,t.jsx)(e.h2,{id:\"technical-implementation\",children:(0,t.jsx)(e.a,{href:\"#technical-implementation\",children:\"Technical Implementation\"})}),`\n`,(0,t.jsx)(e.pre,{children:(0,t.jsx)(e.code,{className:\"language-typescript\",children:`// Sample code snippet\ninterface AgentConfig {\n  model: string;\n  temperature: number;\n  tools: string[];\n}\n\nconst agent = new AIAgent({\n  model: \"gpt-4\",\n  temperature: 0.7,\n  tools: [\"filesystem\", \"git\", \"terminal\"]\n});\n`})}),`\n`,(0,t.jsx)(e.h2,{id:\"results\",children:(0,t.jsx)(e.a,{href:\"#results\",children:\"Results\"})}),`\n`,(0,t.jsxs)(e.ul,{children:[`\n`,(0,t.jsx)(e.li,{children:\"40% reduction in repetitive tasks\"}),`\n`,(0,t.jsx)(e.li,{children:\"60% faster development cycles\"}),`\n`,(0,t.jsx)(e.li,{children:\"High user satisfaction scores\"}),`\n`]})]})}function v(n={}){let{wrapper:e}=n.components||{};return e?(0,t.jsx)(e,Object.assign({},n,{children:(0,t.jsx)(p,n)})):p(n)}var b=v;return x(I);})();\n;return Component;"
+        },
+        "_id": "projects/sample-project.mdx",
+        "_raw": {
+          "sourceFilePath": "projects/sample-project.mdx",
+          "sourceFileName": "sample-project.mdx",
+          "sourceFileDir": "projects",
+          "contentType": "mdx",
+          "flattenedPath": "projects/sample-project"
+        },
+        "type": "Project",
+        "slug": "sample-project",
+        "readingTime": 1
+      },
+      "documentHash": "1755999311791",
+      "hasWarnings": false,
+      "documentTypeName": "Project"
+    }
+  }
+}
