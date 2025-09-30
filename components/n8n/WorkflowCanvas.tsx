@@ -37,7 +37,7 @@ export default function WorkflowCanvas({ workflow, selectedNode, onNodeClick }: 
 
   // Draw connections between nodes
   const renderConnections = () => {
-    const connections: JSX.Element[] = [];
+    const connections: React.ReactElement[] = [];
 
     Object.entries(workflow.connections || {}).forEach(([sourceNodeId, outputs]: [string, any]) => {
       const sourceNode = workflow.nodes.find((n: any) => n.id === sourceNodeId || n.name === sourceNodeId);
