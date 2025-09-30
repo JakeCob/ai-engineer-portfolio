@@ -1,12 +1,26 @@
+'use client';
+
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { allProjects } from 'contentlayer/generated';
 import MDXRenderer from '@/components/MDXRenderer';
 import VoiceAgentV2 from '@/components/VoiceAgentV2';
 
 export default function N8nWorkflowsPage() {
   const project = allProjects.find(p => p.slug === 'n8n-workflows');
+
+  // Prevent auto-scroll on page load
+  useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+
+    // Prevent any hash-based scrolling
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
 
   if (!project) {
     notFound();
@@ -447,7 +461,7 @@ export default function N8nWorkflowsPage() {
         </div>
 
         {/* Embedded Chatbot */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="p-6 bg-gradient-to-b from-neutral-50 to-white dark:from-neutral-950 dark:to-black rounded-xl border-2 border-blue-300 dark:border-blue-700 shadow-xl">
             <div className="mb-4 p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg border border-blue-200 dark:border-blue-800">
               <div className="flex items-center gap-3">

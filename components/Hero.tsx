@@ -53,13 +53,6 @@ export default function Hero() {
       <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div>
-          <div className="mb-4">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
-              <span className="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse"></span>
-              Available for opportunities
-            </span>
-          </div>
-
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
             <span className="block mb-2">
               {displayText}

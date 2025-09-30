@@ -216,10 +216,10 @@ export default function VoiceAgentV2() {
   };
 
   return (
-    <div className="w-full h-[600px] bg-neutral-950 rounded-lg border border-neutral-800 overflow-hidden">
+    <div className="w-full h-[600px] bg-white dark:bg-neutral-950 rounded-lg border border-neutral-200 dark:border-neutral-800 overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-800">
-        <h2 className="text-lg font-semibold text-white">AI Portfolio Assistant</h2>
+      <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-200 dark:border-neutral-800">
+        <h2 className="text-lg font-semibold text-neutral-900 dark:text-white">AI Portfolio Assistant</h2>
         <SettingsPanel
           showChat={showChat}
           showAudio={showAudio}

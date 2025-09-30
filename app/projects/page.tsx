@@ -2,12 +2,23 @@ import Link from 'next/link';
 import { getAllProjects } from '@/lib/projects-data';
 
 export default function ProjectsPage() {
-  const projects = getAllProjects().sort((a, b) => 
+  const projects = getAllProjects().sort((a, b) =>
     new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
   );
 
   return (
     <main className="container mx-auto px-4 py-16">
+      {/* Back Button */}
+      <Link
+        href="/"
+        className="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-8"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Back to Home</span>
+      </Link>
+
       <h1 className="text-3xl font-bold">Projects</h1>
       <p className="mt-4 text-neutral-600 dark:text-neutral-400">AI projects showcasing end-to-end machine learning solutions and real-world applications.</p>
       

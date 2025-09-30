@@ -1,6 +1,6 @@
 'use client';
 
-import { useTheme } from './ThemeProvider';
+import { useTheme } from 'next-themes';
 import { useState, useEffect } from 'react';
 
 export default function ThemeToggle() {
@@ -17,17 +17,14 @@ export default function ThemeToggle() {
     );
   }
 
+  const toggleTheme = () => {
+    const newTheme = resolvedTheme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  };
+
   return (
     <button
-      onClick={() => {
-        if (theme === 'system') {
-          setTheme(resolvedTheme === 'light' ? 'dark' : 'light');
-        } else if (theme === 'light') {
-          setTheme('dark');
-        } else {
-          setTheme('light');
-        }
-      }}
+      onClick={toggleTheme}
       className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
       aria-label={`Switch to ${resolvedTheme === 'light' ? 'dark' : 'light'} mode`}
     >
