@@ -135,14 +135,20 @@ export function useSpeech(options: UseSpeechOptions = {}): UseSpeechReturn {
   }, [isListening]);
 
   const stopListening = useCallback(() => {
-    if (recognitionRef.current && isListening) {
-      recognitionRef.current.stop();
+    if (recognitionRef.current) {
+      try {
+        recognitionRef.current.stop();
+        setIsListening(false);
+      } catch (error) {
+        console.log('Error stopping recognition:', error);
+        setIsListening(false);
+      }
     }
-  }, [isListening]);
+  }, []);
 
   const speak = useCallback((text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-      setError('Speech synthesis not supported');
+      console.log('Speech synthesis not supported');
       return;
     }
 
@@ -168,13 +174,19 @@ export function useSpeech(options: UseSpeechOptions = {}): UseSpeechReturn {
     };
 
     utterance.onerror = (event) => {
-      console.error('Speech synthesis error:', event);
+      // Only log significant errors, ignore cancelled/interrupted
+      if (event.error !== 'canceled' && event.error !== 'interrupted') {
+        console.error('Speech synthesis error:', event.error);
+      }
       setIsSpeaking(false);
-      setError('Failed to speak');
     };
 
     synthesisRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
+
+    // Small delay to ensure previous utterance is cancelled
+    setTimeout(() => {
+      window.speechSynthesis.speak(utterance);
+    }, 100);
   }, [selectedVoice]);
 
   const stopSpeaking = useCallback(() => {

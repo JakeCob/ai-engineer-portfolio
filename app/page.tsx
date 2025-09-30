@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -6,6 +9,17 @@ import FeaturedProjects from "@/components/FeaturedProjects";
 import SkillsSection from "@/components/SkillsSection";
 
 export default function Home() {
+  // Prevent auto-scroll on page load
+  useEffect(() => {
+    // Scroll to top when page loads
+    window.scrollTo(0, 0);
+
+    // Prevent any hash-based scrolling
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />

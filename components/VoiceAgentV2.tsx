@@ -20,6 +20,7 @@ export default function VoiceAgentV2() {
   const [showAudio, setShowAudio] = useState(true);
   const [isConnected, setIsConnected] = useState(true);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [manualStop, setManualStop] = useState(false);
 
   const {
     isListening,
@@ -117,10 +118,10 @@ export default function VoiceAgentV2() {
     } finally {
       setIsProcessing(false);
 
-      // Resume listening after a delay to avoid conflicts
-      if (showAudio) {
+      // Resume listening after a delay to avoid conflicts (only if not manually stopped)
+      if (showAudio && !manualStop) {
         setTimeout(() => {
-          if (!isSpeaking && !isListening) {
+          if (!isSpeaking && !isListening && !manualStop) {
             console.log('Restarting listening after speech processing');
             startListening();
           }
@@ -189,16 +190,28 @@ export default function VoiceAgentV2() {
     }
   };
 
+  const handleStartListening = () => {
+    setManualStop(false);
+    startListening();
+  };
+
+  const handleStopListening = () => {
+    setManualStop(true);
+    stopListening();
+  };
+
   const handleToggleChat = () => setShowChat(!showChat);
+
   const handleToggleAudio = () => {
     setShowAudio(!showAudio);
     if (!showAudio) {
       // Enabling audio
-      startListening();
+      setManualStop(false);
     } else {
       // Disabling audio
       stopListening();
       stopSpeaking();
+      setManualStop(true);
     }
   };
 
@@ -229,7 +242,8 @@ export default function VoiceAgentV2() {
             <AudioPanel
               isListening={isListening}
               isSpeaking={isSpeaking}
-              onTestMicrophone={startListening}
+              onStartListening={handleStartListening}
+              onStopListening={handleStopListening}
             />
           )}
 

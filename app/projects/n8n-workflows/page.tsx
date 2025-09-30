@@ -54,10 +54,7 @@ export default function N8nWorkflowsPage() {
               Live Implementation Running Now!
             </h3>
             <p className="text-sm text-blue-700 dark:text-blue-300">
-              The workflows shown below are actively powering the AI assistant on this portfolio.{' '}
-              <a href="/#chat-section" className="underline font-medium">
-                Try it yourself →
-              </a>
+              The workflows shown below are actively powering the AI assistant on this portfolio. Scroll down to try it yourself!
             </p>
           </div>
         </div>
