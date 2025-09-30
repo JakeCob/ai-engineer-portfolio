@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'noreply@example.com', // Placeholder from address
+      from: 'onboarding@resend.dev', // Using Resend's shared domain
       to: [process.env.CONTACT_TO || 'rafaljacobmatthew@gmail.com'],
       subject: `Portfolio Contact: ${name}`,
       html: `

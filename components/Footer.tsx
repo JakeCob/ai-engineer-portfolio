@@ -8,7 +8,6 @@ export default function Footer() {
           <a href="https://www.linkedin.com/in/jacob-matthew-rafal-b94399217/" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="mailto:rafaljacobmatthew@gmail.com">Email</a>
           <a href="https://calendly.com/rafaljacobmatthew/30min" target="_blank" rel="noreferrer">Calendly</a>
-          <a href="/rss.xml">RSS</a>
         </nav>
       </div>
     </footer>

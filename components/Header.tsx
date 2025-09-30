@@ -8,8 +8,7 @@ import { siteConfig } from "@/lib/config";
 const navItems = [
   { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
-  { name: "Blog", href: "/blog" },
-  { name: "Demos", href: "/demos" },
+  { name: "Blog", href: "/blog", disabled: true, label: "Coming Soon" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -34,17 +33,29 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-6 text-sm">
           {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
-                isActiveLink(item.href)
-                  ? "text-blue-600 dark:text-blue-400 font-medium"
-                  : ""
-              }`}
-            >
-              {item.name}
-            </Link>
+            item.disabled ? (
+              <span
+                key={item.href}
+                className="text-neutral-400 dark:text-neutral-500 cursor-not-allowed relative group"
+              >
+                {item.name}
+                <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                  {item.label}
+                </span>
+              </span>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                  isActiveLink(item.href)
+                    ? "text-blue-600 dark:text-blue-400 font-medium"
+                    : ""
+                }`}
+              >
+                {item.name}
+              </Link>
+            )
           ))}
         </nav>
 
@@ -86,18 +97,30 @@ export default function Header() {
         <div className="md:hidden border-t border-neutral-200 dark:border-neutral-800">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-3">
             {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`py-2 text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
-                  isActiveLink(item.href)
-                    ? "text-blue-600 dark:text-blue-400 font-medium"
-                    : ""
-                }`}
-              >
-                {item.name}
-              </Link>
+              item.disabled ? (
+                <span
+                  key={item.href}
+                  className="py-2 text-sm text-neutral-400 dark:text-neutral-500 cursor-not-allowed flex items-center gap-2"
+                >
+                  {item.name}
+                  <span className="text-xs bg-neutral-800 text-white px-2 py-0.5 rounded">
+                    {item.label}
+                  </span>
+                </span>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`py-2 text-sm hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                    isActiveLink(item.href)
+                      ? "text-blue-600 dark:text-blue-400 font-medium"
+                      : ""
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <Link
               href="/contact"
