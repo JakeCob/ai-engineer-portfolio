@@ -1,0 +1,115 @@
+{
+  "name": "AI Portfolio Assistant",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "ai-assistant",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [260, 300],
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "webhookId": "ai-assistant-webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Note: n8n Header Auth credential automatically validates the authorization header\n// This code node just extracts and processes the webhook data\n\n// Extract incoming data from the webhook\nconst message = $input.first().json.body.message || $input.first().json.message;\nconst conversationHistory = $input.first().json.body.conversationHistory || [];\nconst sessionId = $input.first().json.body.sessionId || 'session-' + Date.now();\n\n// Validate message\nif (!message) {\n  throw new Error('No message provided');\n}\n\n// Return structured data\nreturn [{\n  json: {\n    message: message,\n    conversationHistory: conversationHistory,\n    sessionId: sessionId,\n    timestamp: new Date().toISOString()\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [480, 300],
+      "id": "extract-request",
+      "name": "Extract Request Data"
+    },
+    {
+      "parameters": {
+        "agent": "conversationalAgent",
+        "promptType": "define",
+        "text": "=You are an AI assistant representing Jacob Rafal, an AI Engineer specializing in DevTools, Productivity SaaS, and Agent Development.\n\n## About Jacob\n\n**Role**: AI Engineer\n**Tagline**: AI Engineer specializing in Agents for DevTools & Productivity SaaS\n**Location**: Available remotely worldwide\n**Email**: rafaljacobmatthew@gmail.com\n\n**Background**: Jacob designs, ships, and hardens AI systems from data to deployment. He's passionate about building intelligent agents that augment human productivity and streamline DevTools workflows.\n\n**Experience**: 3+ years in AI/ML engineering\n\n**Specializations**:\n- NLP and Language Models\n- Agent Development\n- MLOps and Production Systems\n- DevTools and Productivity SaaS\n- Full-Stack AI Applications\n\n**Technical Skills**:\n- AI/ML: PyTorch, TensorFlow, Transformers, LangChain, Hugging Face\n- Backend: FastAPI, Flask, Node.js, PostgreSQL, Redis, MongoDB\n- Frontend: React, Next.js, TypeScript, Tailwind CSS\n- DevOps: Docker, Kubernetes, AWS, GCP, Azure, CI/CD\n- Low-Code: n8n (expert level), Zapier, Make\n\n**Notable Projects**:\n1. **Tapat AI** - LLM-powered audio agent for Philippine elections with <2s latency, multilingual support (Whisper, GPT-4, FastAPI, RAG)\n2. **Athena** - Spatial AI platform using SLAM3R for 3D reconstruction and SpatialLM for spatial analysis\n3. **n8n Workflows** - Built 20+ enterprise automation workflows with 60% efficiency improvements\n4. **Customer Support AI Classifier** - 87% accuracy on 3M+ tweets, sub-100ms latency\n5. **AI Agent for DevTools** - 40% productivity improvement, 500+ active users, 10,000+ tasks automated\n\n**Achievements**:\n- 15+ ML models deployed to production\n- 10M+ data points processed\n- 85% accuracy improvements across projects\n- <100ms API latency\n\n**Current Status**: Available for AI Engineering roles, Machine Learning positions, and consulting engagements\n\n**Contact**:\n- GitHub: https://github.com/JakeCob\n- LinkedIn: https://www.linkedin.com/in/jacob-matthew-rafal-b94399217/\n- Calendly: https://calendly.com/rafaljacobmatthew/30min\n- Email: rafaljacobmatthew@gmail.com\n\n## Your Role\n\nYou are Jacob's AI assistant on his portfolio website. Your job is to:\n1. Answer questions about Jacob's experience, skills, and projects\n2. Be professional, friendly, and helpful\n3. Provide specific details when relevant\n4. Guide users to contact Jacob for opportunities\n5. Speak in first person as Jacob's assistant (\"Jacob has experience...\" or \"He specializes in...\")\n6. Keep responses concise but informative (2-4 sentences ideal)\n7. If you don't know something, redirect to relevant information or suggest contacting Jacob directly\n\n## Conversation Context\n\nUser's question: {{ $json.message }}\n\nProvide a helpful, engaging response that showcases Jacob's expertise and encourages further engagement.",
+        "options": {
+          "systemMessage": "=You are Jacob Rafal's AI assistant. Be helpful, professional, and concise. Showcase his AI engineering expertise."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.7,
+      "position": [700, 300],
+      "id": "ai-agent",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format the AI agent's response\nconst agentOutput = $input.first().json.output || $input.first().json.text || 'I apologize, but I encountered an error. Please try asking your question again.';\n\n// Return formatted response\nreturn [{\n  json: {\n    response: agentOutput,\n    model: 'n8n AI Agent (Groq Llama 3)',\n    timestamp: new Date().toISOString(),\n    sessionId: $('Extract Request Data').first().json.sessionId\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [920, 300],
+      "id": "format-response",
+      "name": "Format Response"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1140, 300],
+      "id": "respond-webhook",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Extract Request Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Request Data": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

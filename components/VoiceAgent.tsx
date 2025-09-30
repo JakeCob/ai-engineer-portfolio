@@ -21,7 +21,7 @@ export default function VoiceAgent() {
     {
       id: '1',
       role: 'assistant',
-      content: "Hi! I'm Jacob's AI assistant. Ask me anything about his experience, skills, or projects. You can type or use voice!",
+      content: "Hi! I'm Jacob's AI assistant, powered by n8n workflow automation and RAG embeddings. Ask me anything about his experience, skills, or projects. You can type or use voice!",
       timestamp: new Date(),
     },
   ]);
@@ -106,14 +106,36 @@ export default function VoiceAgent() {
     setInput('');
     setIsProcessing(true);
 
-    // Simulate AI response (replace with actual API call)
-    setTimeout(() => {
+    try {
+      // Call the n8n-powered API
+      const response = await fetch('/api/assistant', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: userMessage.content,
+          conversationHistory: messages.map(m => ({
+            role: m.role,
+            content: m.content
+          })),
+          sessionId: `session-${Date.now()}`
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
+
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: generateResponse(userMessage.content),
+        content: data.response,
         timestamp: new Date(),
       };
+
       setMessages((prev) => [...prev, assistantMessage]);
       setIsProcessing(false);
 
@@ -128,7 +150,20 @@ export default function VoiceAgent() {
         utterance.onend = () => setIsSpeaking(false);
         speechSynthesis.speak(utterance);
       }
-    }, 1000);
+    } catch (error) {
+      console.error('Error getting AI response:', error);
+
+      // Fallback to rule-based response
+      const assistantMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: generateResponse(userMessage.content),
+        timestamp: new Date(),
+      };
+
+      setMessages((prev) => [...prev, assistantMessage]);
+      setIsProcessing(false);
+    }
   };
 
   const toggleListening = () => {
@@ -289,7 +324,7 @@ export default function VoiceAgent() {
           </div>
 
           <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-2 text-center">
-            Powered by open-source AI • Ask about skills, projects, or experience
+            Powered by n8n + Groq + RAG • Ask about skills, projects, or experience
           </p>
         </div>
       </div>

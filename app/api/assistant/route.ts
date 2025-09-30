@@ -1,137 +1,66 @@
 import { NextRequest } from 'next/server';
 import knowledgeBase from '@/lib/knowledge-base.json';
 
-// For production, you would integrate with one of these:
-// - Groq Cloud (free tier): https://console.groq.com
-// - Together AI: https://api.together.xyz
-// - Hugging Face Inference: https://huggingface.co/inference-api
-// - Local Ollama: http://localhost:11434/api/generate
+// Using n8n workflow automation as orchestration layer
+// This showcases workflow automation skills and enables complex multi-service integrations
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, conversationHistory = [] } = await request.json();
+    const { message, conversationHistory = [], sessionId } = await request.json();
 
-    // Build context from knowledge base
-    const context = `You are an AI assistant representing ${knowledgeBase.identity.name}, an ${knowledgeBase.identity.role}.
-
-Background: ${knowledgeBase.background.summary}
-
-Key Information:
-- Specializations: ${knowledgeBase.background.specializations.join(', ')}
-- Years of Experience: ${knowledgeBase.background.years_experience}
-- Location: ${knowledgeBase.identity.location}
-- Email: ${knowledgeBase.identity.email}
-
-Technical Skills:
-- AI/ML: ${knowledgeBase.technical_skills.ai_ml.frameworks.join(', ')}
-- Data Engineering: ${knowledgeBase.technical_skills.data_engineering.languages.join(', ')}
-- Backend: ${knowledgeBase.technical_skills.backend.frameworks.join(', ')}
-- Frontend: ${knowledgeBase.technical_skills.frontend.frameworks.join(', ')}
-
-Notable Projects:
-${knowledgeBase.projects.map(p => `- ${p.name}: ${p.description}`).join('\n')}
-
-Current Status: ${knowledgeBase.availability.status}
-
-When answering questions:
-1. Speak in first person as if you are Jacob's AI assistant
-2. Be helpful, professional, and friendly
-3. Provide specific details from the knowledge base when relevant
-4. If asked about something not in your knowledge, politely redirect to relevant information
-5. Keep responses concise but informative`;
-
-    // Option 1: Use Groq Cloud (Free Tier - Recommended)
-    if (process.env.GROQ_API_KEY) {
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'llama3-8b-8192', // Free and fast
-          messages: [
-            { role: 'system', content: context },
-            ...conversationHistory,
-            { role: 'user', content: message }
-          ],
-          temperature: 0.7,
-          max_tokens: 500,
-        }),
-      });
-
-      const data = await response.json();
-      return Response.json({
-        response: data.choices[0].message.content,
-        model: 'Llama 3 (Groq)',
-      });
+    // Validate message
+    if (!message || typeof message !== 'string') {
+      return Response.json(
+        { error: 'Invalid message format' },
+        { status: 400 }
+      );
     }
 
-    // Option 2: Use Together AI (Free Credits)
-    if (process.env.TOGETHER_API_KEY) {
-      const response = await fetch('https://api.together.xyz/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.TOGETHER_API_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'meta-llama/Llama-3-8b-chat-hf',
-          messages: [
-            { role: 'system', content: context },
-            ...conversationHistory,
-            { role: 'user', content: message }
-          ],
-          temperature: 0.7,
-          max_tokens: 500,
-        }),
-      });
+    // Call n8n webhook endpoint
+    const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL || 'https://n8n-production-60ce.up.railway.app/webhook/ai-assistant';
+    const apiKey = process.env.N8N_WEBHOOK_API_KEY;
 
-      const data = await response.json();
-      return Response.json({
-        response: data.choices[0].message.content,
-        model: 'Llama 3 (Together)',
-      });
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+    };
+
+    // Add API key if configured (n8n Header Auth expects the key directly, not "Bearer ")
+    if (apiKey) {
+      headers['Authorization'] = apiKey;
     }
 
-    // Option 3: Use local Ollama (Completely Free)
-    if (process.env.USE_OLLAMA === 'true') {
-      const response = await fetch('http://localhost:11434/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          model: 'llama3',
-          messages: [
-            { role: 'system', content: context },
-            ...conversationHistory,
-            { role: 'user', content: message }
-          ],
-          stream: false,
-        }),
-      });
-
-      const data = await response.json();
-      return Response.json({
-        response: data.message.content,
-        model: 'Llama 3 (Local)',
-      });
-    }
-
-    // Fallback: Rule-based responses using knowledge base
-    const response = generateRuleBasedResponse(message, knowledgeBase);
-    return Response.json({
-      response,
-      model: 'Rule-based (Configure API for better responses)',
+    const response = await fetch(n8nWebhookUrl, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        message,
+        conversationHistory,
+        sessionId: sessionId || `session-${Date.now()}`,
+        timestamp: new Date().toISOString()
+      }),
     });
+
+    if (!response.ok) {
+      throw new Error(`n8n webhook returned ${response.status}`);
+    }
+
+    const data = await response.json();
+    return Response.json(data);
 
   } catch (error) {
     console.error('Assistant API error:', error);
-    return Response.json(
-      { error: 'Failed to generate response' },
-      { status: 500 }
+
+    // Fallback to rule-based response if n8n is unavailable
+    const fallbackResponse = generateRuleBasedResponse(
+      (await request.json()).message,
+      knowledgeBase
     );
+
+    return Response.json({
+      response: fallbackResponse,
+      model: 'Rule-based fallback',
+      note: 'n8n workflow temporarily unavailable'
+    });
   }
 }
 
