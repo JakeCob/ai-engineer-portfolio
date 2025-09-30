@@ -2,42 +2,40 @@ import Link from 'next/link';
 
 const featuredProjects = [
   {
-    title: "Customer Support AI Classifier",
-    description: "Multi-task NLP model achieving 85%+ accuracy on 3M+ tweets. Handles priority detection, sentiment analysis, and intelligent routing.",
-    tech: ["BERT", "PyTorch", "FastAPI", "Docker"],
+    title: "Tapat - AI Audio Agent for Philippine Elections",
+    description: "Built an LLM-powered audio agent with real-time conversation capabilities. Demonstrates RAG implementation, prompt engineering, and production FastAPI deployment.",
+    tech: ["Whisper", "GPT-4", "FastAPI", "LangChain"],
     metrics: {
-      accuracy: "87%",
-      latency: "<100ms",
-      dataset: "3M tweets"
+      latency: "<2s response",
+      languages: "Multilingual",
+      deployment: "Production"
     },
-    link: "/work/customer-support-classifier",
-    demoLink: "/demos/classifier",
-    icon: "🎯"
+    link: "/projects/tapat-ai",
+    icon: "🎙️"
   },
   {
-    title: "AI Agent for DevTools",
-    description: "Intelligent coding assistant that automates repetitive tasks, generates boilerplate, and provides context-aware suggestions.",
-    tech: ["LangChain", "GPT-4", "Vector DB", "Next.js"],
+    title: "n8n Workflow Orchestration Platform",
+    description: "Designed and deployed 20+ enterprise automation workflows using n8n. Integrated LLMs, APIs, and databases for no-code AI solutions similar to ELGO's platform.",
+    tech: ["n8n", "LangChain", "PostgreSQL", "APIs"],
     metrics: {
-      productivity: "+40%",
-      users: "500+",
-      tasks: "10K+"
+      workflows: "20+ built",
+      efficiency: "60% faster",
+      integrations: "15+ services"
     },
-    link: "/work/devtools-agent",
-    demoLink: "/demos/agent",
-    icon: "🤖"
-  },
-  {
-    title: "Real-time Data Pipeline",
-    description: "Scalable MLOps pipeline processing 10M+ events daily with automated model retraining and A/B testing capabilities.",
-    tech: ["Kafka", "Spark", "MLflow", "Kubernetes"],
-    metrics: {
-      throughput: "10M/day",
-      uptime: "99.9%",
-      models: "5 concurrent"
-    },
-    link: "/work/data-pipeline",
+    link: "/projects/n8n-workflows",
     icon: "⚡"
+  },
+  {
+    title: "Athena - Spatial AI Analysis Platform",
+    description: "Computer vision system leveraging SLAM3R for 3D point cloud generation and SpatialLM for spatial analysis. Creates interactive 2D/3D floorplans with AI-powered risk assessments and design recommendations.",
+    tech: ["SLAM3R", "SpatialLM", "Gradio", "Computer Vision", "3D Visualization"],
+    metrics: {
+      processing: "Video → 3D",
+      analysis: "Risk + Design",
+      interface: "Interactive"
+    },
+    link: "/projects/athena",
+    icon: "🏗️"
   }
 ];
 
@@ -104,7 +102,7 @@ export default function FeaturedProjects() {
                     href={project.link}
                     className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
                   >
-                    View Case Study
+                    {(project.title.includes('Athena') || project.title.includes('Tapat')) ? 'Watch Demo' : 'View Details'}
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -131,7 +129,7 @@ export default function FeaturedProjects() {
 
         <div className="text-center mt-10">
           <Link
-            href="/work"
+            href="/projects"
             className="inline-flex items-center px-6 py-3 rounded-lg bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors font-medium"
           >
             View All Projects

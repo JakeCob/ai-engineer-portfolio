@@ -6,17 +6,19 @@ import { useState, useEffect } from "react";
 
 const roles = [
   "AI Engineer",
+  "GenAI Expert",
   "ML Systems Architect",
+  "Computer Vision Engineer",
   "Agent Developer",
-  "NLP Specialist",
-  "Data Scientist"
+  "Automation Expert",
+  "Low-Code/No-Code Specialist"
 ];
 
 const achievements = [
-  { label: "ML Models Deployed", value: "15+", icon: "🚀" },
-  { label: "Data Processed", value: "10M+", icon: "📊" },
-  { label: "Accuracy Improvement", value: "85%", icon: "📈" },
-  { label: "API Latency", value: "<100ms", icon: "⚡" }
+  { label: "Years of AI Experience", value: "2+", icon: "🎯" },
+  { label: "AI Systems Built", value: "8+", icon: "🚀" },
+  { label: "Solo Projects", value: "100%", icon: "💪" },
+  { label: "Tech Stack", value: "Full", icon: "⚡" }
 ];
 
 export default function Hero() {
@@ -64,14 +66,14 @@ export default function Hero() {
               <span className="animate-pulse">|</span>
             </span>
             <span className="block text-2xl md:text-3xl lg:text-4xl text-neutral-600 dark:text-neutral-400">
-              specializing in Agents & MLOps
+              specializing in LLM Orchestration & No-Code AI
             </span>
           </h1>
 
           <p className="mt-6 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl">
-            I design, ship, and harden AI systems from data to deployment.
-            Passionate about building intelligent agents that augment human productivity
-            and streamline DevTools workflows.
+            AI Engineer with 2+ years of experience in machine learning and production systems.
+            Specializing in NLP, audio agents, and low-code/no-code automation with n8n.
+            Active Omdena AI contributor, creator of Tapat AI, and passionate about building open-source demos.
           </p>
 
           {/* Achievement Metrics */}
@@ -92,16 +94,17 @@ export default function Hero() {
           {/* CTAs */}
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
-              href="/work"
+              href="/projects"
               className="inline-flex items-center rounded-md bg-black text-white dark:bg-white dark:text-black px-6 py-3 font-medium hover:opacity-90 transition-opacity"
             >
-              View My Work
+              View My Projects
               <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </Link>
             <a
               href="/documents/resume.pdf"
+              download="Jacob_Rafal_Resume.pdf"
               className="inline-flex items-center rounded-md border border-neutral-300 dark:border-neutral-700 px-6 py-3 font-medium hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
               aria-label="Download resume as PDF"
             >
@@ -158,8 +161,13 @@ export default function Hero() {
             </div>
 
             <div className="absolute -bottom-4 -left-4 bg-white dark:bg-black rounded-lg shadow-lg px-4 py-2 flex items-center space-x-2">
-              <span className="text-2xl">🔧</span>
-              <span className="text-sm font-medium">Full Stack</span>
+              <span className="text-2xl">⚡</span>
+              <span className="text-sm font-medium">n8n Expert</span>
+            </div>
+
+            <div className="absolute bottom-8 -right-6 bg-white dark:bg-black rounded-lg shadow-lg px-3 py-1.5 flex items-center space-x-2">
+              <span className="text-xl">🔧</span>
+              <span className="text-xs font-medium">Low-Code</span>
             </div>
           </div>
         </div>

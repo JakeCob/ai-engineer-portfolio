@@ -1,9 +1,18 @@
+'use client';
+
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
-const components = {};
-
 export default function MDXRenderer({ code }: { code: string }) {
-  const Component = useMDXComponent(code);
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <Component components={components as any} />;
+  try {
+    const Component = useMDXComponent(code);
+    return <Component />;
+  } catch (error) {
+    console.error('MDX rendering error:', error);
+    // Fallback rendering for development
+    return (
+      <div className="text-neutral-600 dark:text-neutral-400">
+        <p>Content loading...</p>
+      </div>
+    );
+  }
 }

@@ -7,7 +7,7 @@ import { siteConfig } from "@/lib/config";
 import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
-  { name: "Work", href: "/work" },
+  { name: "Projects", href: "/projects" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
   { name: "Demos", href: "/demos" },

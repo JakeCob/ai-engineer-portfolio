@@ -4,27 +4,27 @@ import { useState } from 'react';
 
 const skillCategories = [
   {
-    name: "AI/ML",
+    name: "GenAI & LLMs",
     icon: "🤖",
     skills: [
-      { name: "PyTorch", level: 90 },
-      { name: "TensorFlow", level: 85 },
-      { name: "Transformers/NLP", level: 92 },
       { name: "LangChain", level: 88 },
-      { name: "Computer Vision", level: 75 },
-      { name: "MLOps", level: 85 }
+      { name: "RAG Systems", level: 85 },
+      { name: "Computer Vision", level: 83 },
+      { name: "FastAPI", level: 92 },
+      { name: "Multi-Agent Systems", level: 82 },
+      { name: "Spatial AI", level: 85 }
     ]
   },
   {
-    name: "Data Engineering",
+    name: "Data & Infrastructure",
     icon: "📊",
     skills: [
       { name: "Python", level: 95 },
-      { name: "SQL", level: 88 },
-      { name: "Apache Spark", level: 80 },
-      { name: "Kafka", level: 75 },
-      { name: "Airflow", level: 82 },
-      { name: "Vector Databases", level: 85 }
+      { name: "PostgreSQL", level: 88 },
+      { name: "MongoDB", level: 85 },
+      { name: "Redis", level: 82 },
+      { name: "Vector DBs (Qdrant)", level: 80 },
+      { name: "AWS", level: 83 }
     ]
   },
   {
@@ -49,6 +49,18 @@ const skillCategories = [
       { name: "Data Visualization", level: 80 },
       { name: "REST APIs", level: 90 },
       { name: "WebSockets", level: 75 }
+    ]
+  },
+  {
+    name: "Low-Code/No-Code",
+    icon: "⚡",
+    skills: [
+      { name: "n8n Workflows", level: 92 },
+      { name: "Zapier", level: 85 },
+      { name: "Make (Integromat)", level: 80 },
+      { name: "Retool", level: 78 },
+      { name: "Bubble", level: 75 },
+      { name: "API Integration", level: 90 }
     ]
   }
 ];
@@ -118,8 +130,9 @@ export default function SkillsSection() {
               Also experienced with:
             </p>
             <div className="flex flex-wrap justify-center gap-2">
-              {['Git', 'Jupyter', 'Pandas', 'NumPy', 'Scikit-learn', 'Weights & Biases',
-                'Hugging Face', 'OpenAI API', 'Redis', 'MongoDB', 'GraphQL', 'Jest'].map((tech) => (
+              {['Git', 'Docker', 'OpenAI API', 'Anthropic API', 'SLAM3R', 'SpatialLM',
+                'Matplotlib', 'Gradio', 'Point Clouds', '3D Visualization',
+                'Hugging Face', 'CrewAI', 'AutoGen', 'LangFlow'].map((tech) => (
                 <span
                   key={tech}
                   className="px-3 py-1 text-xs rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300"

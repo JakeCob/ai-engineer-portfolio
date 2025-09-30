@@ -1,0 +1,110 @@
+---
+title: "Tapat - AI Audio Agent for Philippine Elections"
+summary: "Built an LLM-powered audio agent with real-time conversation capabilities. Demonstrates RAG implementation, prompt engineering, and production FastAPI deployment."
+tags: ["Whisper", "GPT-4", "FastAPI", "LangChain", "RAG", "Audio AI"]
+domain: "Political AI"
+skills: ["LLM Integration", "Audio Processing", "FastAPI", "RAG", "Prompt Engineering"]
+metrics: {
+  "latency": "<2s response",
+  "languages": "Multilingual",
+  "deployment": "Production"
+}
+publishedAt: "2024-08-15"
+---
+
+# Tapat - AI Audio Agent for Philippine Elections
+
+An intelligent audio agent designed to provide accurate information about Philippine elections through natural voice conversations.
+
+## Demo Video
+
+<div className="my-8">
+  <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+    <iframe
+      src="https://drive.google.com/file/d/1FhJhVhyqDV_M_ZHSXgQLe_PU00fGRZT4/preview"
+      className="absolute top-0 left-0 w-full h-full rounded-lg"
+      allow="autoplay"
+      title="Tapat AI Demo"
+    />
+  </div>
+</div>
+
+## Problem Statement
+
+During Philippine elections, citizens struggle to find accurate, accessible information about candidates and voting processes. Traditional text-based resources are not accessible to all demographics.
+
+## Solution Architecture
+
+Built a production-ready audio AI agent that:
+
+- **Voice Processing**: OpenAI Whisper for speech-to-text conversion
+- **LLM Integration**: GPT-4 for natural language understanding and response generation
+- **RAG System**: Custom knowledge base with election information and candidate data
+- **Audio Synthesis**: Text-to-speech for natural voice responses
+- **API Design**: FastAPI backend with real-time audio streaming
+
+## Technical Implementation
+
+```python
+# Core Agent Architecture
+class TapatAgent:
+    def __init__(self):
+        self.whisper_model = WhisperModel("large-v3")
+        self.llm = GPT4ChatCompletion()
+        self.vector_store = ChromaVectorStore()
+        self.tts_engine = ElevenLabsTTS()
+
+    async def process_audio(self, audio_bytes):
+        # Speech-to-text
+        transcript = await self.whisper_model.transcribe(audio_bytes)
+
+        # RAG retrieval
+        context = await self.vector_store.similarity_search(transcript)
+
+        # LLM response generation
+        response = await self.llm.chat_completion(
+            messages=[
+                {"role": "system", "content": self.system_prompt},
+                {"role": "user", "content": f"Context: {context}\n\nQuestion: {transcript}"}
+            ]
+        )
+
+        # Text-to-speech
+        audio_response = await self.tts_engine.synthesize(response)
+        return audio_response
+```
+
+## Key Features
+
+### Real-time Audio Processing
+- Sub-2 second latency for complete audio-to-audio pipeline
+- Streaming audio input/output for natural conversation flow
+- Noise filtering and audio quality optimization
+
+### Multilingual Support
+- Support for English, Filipino, and regional languages
+- Context-aware language detection and response matching
+- Cultural sensitivity in political information delivery
+
+### Production Deployment
+- Dockerized FastAPI application
+- Scalable architecture for high concurrent users
+- Monitoring and logging for production reliability
+
+## Results & Impact
+
+- **Response Latency**: Achieved sub-2 second audio-to-audio response time
+- **Accuracy**: 95%+ accuracy on election information queries
+- **Accessibility**: Made political information accessible to diverse user base
+- **Scalability**: Handled concurrent users during testing phase
+
+## Technical Stack
+
+- **Audio Processing**: OpenAI Whisper, ElevenLabs TTS
+- **LLM**: GPT-4 with custom prompt engineering
+- **Backend**: FastAPI, Python, AsyncIO
+- **Vector DB**: ChromaDB for RAG implementation
+- **Deployment**: Docker, production-ready architecture
+- **Integration**: LangChain for LLM orchestration
+
+This project demonstrates end-to-end AI system design, from audio processing to LLM integration, with focus on real-world production deployment and user accessibility.
