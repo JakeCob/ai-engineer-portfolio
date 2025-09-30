@@ -16,6 +16,23 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "n8n-workflows",
+    title: "n8n Workflow Orchestration Platform",
+    summary: "Designed and deployed 20+ enterprise automation workflows using n8n. Integrated LLMs, APIs, and databases for no-code AI solutions. Live implementation powers this portfolio's AI assistant.",
+    description: "Enterprise-grade automation platform built with n8n, demonstrating expertise in no-code AI workflow development and system integration.",
+    tags: ["n8n", "LangChain", "PostgreSQL", "APIs", "No-Code", "Workflow Automation", "Groq", "RAG"],
+    domain: "Automation & Integration",
+    skills: ["Workflow Design", "API Integration", "Database Management", "LLM Orchestration", "No-Code Development", "RAG Implementation"],
+    metrics: {
+      "workflows": "20+ built",
+      "efficiency": "60% faster",
+      "integrations": "15+ services",
+      "response_time": "<2s latency"
+    },
+    publishedAt: "2024-09-01",
+    featured: true
+  },
+  {
     slug: "tapat-ai",
     title: "Tapat - AI Audio Agent for Philippine Elections",
     summary: "Built an LLM-powered audio agent with real-time conversation capabilities. Demonstrates RAG implementation, prompt engineering, and production FastAPI deployment.",

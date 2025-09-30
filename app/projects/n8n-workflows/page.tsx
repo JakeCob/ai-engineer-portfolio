@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { allProjects } from 'contentlayer/generated';
 import MDXRenderer from '@/components/MDXRenderer';
-import VoiceAgent from '@/components/VoiceAgent';
+import VoiceAgentV2 from '@/components/VoiceAgentV2';
 
 export default function N8nWorkflowsPage() {
   const project = allProjects.find(p => p.slug === 'n8n-workflows');
@@ -13,6 +14,17 @@ export default function N8nWorkflowsPage() {
 
   return (
     <main className="container mx-auto px-4 py-16">
+      {/* Back Button */}
+      <Link
+        href="/projects"
+        className="inline-flex items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors mb-8"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Back to Projects</span>
+      </Link>
+
       {/* Project Header */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-4">{project.title}</h1>
@@ -451,7 +463,7 @@ export default function N8nWorkflowsPage() {
                 </div>
               </div>
             </div>
-            <VoiceAgent />
+            <VoiceAgentV2 />
           </div>
         </div>
       </div>

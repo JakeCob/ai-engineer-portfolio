@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import VoiceAgent from "@/components/VoiceAgent";
+import VoiceAgentV2 from "@/components/VoiceAgentV2";
 import FeaturedProjects from "@/components/FeaturedProjects";
 import SkillsSection from "@/components/SkillsSection";
 
@@ -24,7 +24,7 @@ export default function Home() {
                 Have questions about my experience? Let my AI assistant help you learn more about my skills, projects, and background.
               </p>
             </div>
-            <VoiceAgent />
+            <VoiceAgentV2 />
           </div>
         </section>
       </main>
