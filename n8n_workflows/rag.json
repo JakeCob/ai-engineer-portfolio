@@ -1,0 +1,178 @@
+{
+    "nodes": [
+      {
+        "parameters": {
+          "formTitle": "Upload Jacob's Resume for RAG",
+          "formDescription": "Upload the PDF resume to create embeddings",
+          "formFields": {
+            "values": [
+              {
+                "fieldLabel": "Resume PDF",
+                "fieldType": "file",
+                "acceptFileTypes": ".pdf",
+                "requiredField": true
+              }
+            ]
+          },
+          "options": {}
+        },
+        "type": "n8n-nodes-base.formTrigger",
+        "typeVersion": 2.2,
+        "position": [
+          464,
+          384
+        ],
+        "id": "b178d6a4-787e-43a6-b09a-65f9d528df8c",
+        "name": "Upload Resume Form",
+        "webhookId": "upload-resume-form"
+      },
+      {
+        "parameters": {
+          "operation": "pdf",
+          "binaryPropertyName": "Resume_PDF",
+          "options": {}
+        },
+        "type": "n8n-nodes-base.extractFromFile",
+        "typeVersion": 1,
+        "position": [
+          688,
+          384
+        ],
+        "id": "8cb9d9a3-f3ce-41e0-b271-1ac78f5c8cb3",
+        "name": "Extract Text from PDF"
+      },
+      {
+        "parameters": {
+          "mode": "insert",
+          "tableName": {
+            "__rl": true,
+            "value": "documents",
+            "mode": "list",
+            "cachedResultName": "documents"
+          },
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+        "typeVersion": 1,
+        "position": [
+          944,
+          384
+        ],
+        "id": "bfdb8464-ed96-4e16-ba89-26e33012c978",
+        "name": "Store in Supabase",
+        "credentials": {
+          "supabaseApi": {
+            "id": "obwE5Tn3gtsvFlXP",
+            "name": "Supabase account"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "chunkOverlap": 200,
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
+        "typeVersion": 1,
+        "position": [
+          1120,
+          816
+        ],
+        "id": "337a5936-24fc-4bac-aa1a-1f6888924ec2",
+        "name": "Text Splitter"
+      },
+      {
+        "parameters": {},
+        "type": "@n8n/n8n-nodes-langchain.embeddingsGoogleGemini",
+        "typeVersion": 1,
+        "position": [
+          912,
+          608
+        ],
+        "id": "df4f68ac-accc-4e0a-84f5-a24b60917fce",
+        "name": "Google Gemini Embeddings",
+        "credentials": {
+          "googlePalmApi": {
+            "id": "rMXGHXGH30ONcFP4",
+            "name": "Portfolio"
+          }
+        }
+      },
+      {
+        "parameters": {
+          "textSplittingMode": "custom",
+          "options": {}
+        },
+        "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
+        "typeVersion": 1.1,
+        "position": [
+          1040,
+          608
+        ],
+        "id": "2a9736be-33be-4765-aad3-09193299731a",
+        "name": "Default Data Loader"
+      }
+    ],
+    "connections": {
+      "Upload Resume Form": {
+        "main": [
+          [
+            {
+              "node": "Extract Text from PDF",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Extract Text from PDF": {
+        "main": [
+          [
+            {
+              "node": "Store in Supabase",
+              "type": "main",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Text Splitter": {
+        "ai_textSplitter": [
+          [
+            {
+              "node": "Default Data Loader",
+              "type": "ai_textSplitter",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Google Gemini Embeddings": {
+        "ai_embedding": [
+          [
+            {
+              "node": "Store in Supabase",
+              "type": "ai_embedding",
+              "index": 0
+            }
+          ]
+        ]
+      },
+      "Default Data Loader": {
+        "ai_document": [
+          [
+            {
+              "node": "Store in Supabase",
+              "type": "ai_document",
+              "index": 0
+            }
+          ]
+        ]
+      }
+    },
+    "pinData": {},
+    "meta": {
+      "templateCredsSetupCompleted": true,
+      "instanceId": "7bf21f8664b85d66cfcc2a2b7f3f76e0b77a6fcbe10a319ad9b49f5389808c78"
+    }
+  }
