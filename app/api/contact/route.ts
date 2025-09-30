@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
 
     // Send email via Resend
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Using Resend's shared domain
+      from: 'noreply@jacobrafal.com', // Using verified custom domain
       to: [process.env.CONTACT_TO || 'rafaljacobmatthew@gmail.com'],
       subject: `Portfolio Contact: ${name}`,
       html: `
